@@ -43,7 +43,7 @@
                 <td><?= $categoria->has('user') ? $this->Html->link($categoria->user->id, ['controller' => 'Users', 'action' => 'view', $categoria->user->id]) : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $categoria->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['action' => 'edit', $categoria->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', $categoria->id], ['class'=>'btn btn-warning btn-xs']) ?>
                   <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $categoria->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>

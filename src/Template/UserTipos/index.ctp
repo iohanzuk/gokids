@@ -41,7 +41,7 @@
                 <td><?= h($userTipo->nome) ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $userTipo->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['action' => 'edit', $userTipo->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', $userTipo->id], ['class'=>'btn btn-warning btn-xs']) ?>
                   <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $userTipo->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>

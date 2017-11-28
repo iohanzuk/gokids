@@ -225,7 +225,7 @@ Configure::write('Theme', [
         'show_social' => true
     ],
     'folder' => ROOT,
-    'skin' => 'blue' // default is 'blue'
+    'skin' => 'blue-light' // default is 'blue'
 ]);
 /*
  * Only try to load DebugKit in development mode

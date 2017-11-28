@@ -107,7 +107,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>

@@ -170,7 +170,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Estabelecimentos', 'action' => 'view', $estabelecimentos->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Estabelecimentos', 'action' => 'edit', $estabelecimentos->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Estabelecimentos', 'action' => 'edit', $estabelecimentos->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Estabelecimentos', 'action' => 'delete', $estabelecimentos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentos->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>

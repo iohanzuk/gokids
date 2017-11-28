@@ -47,7 +47,7 @@
                 <td><?= $user->has('user_tipo') ? $this->Html->link($user->user_tipo->id, ['controller' => 'UserTipos', 'action' => 'view', $user->user_tipo->id]) : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $user->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['action' => 'edit', $user->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id], ['class'=>'btn btn-warning btn-xs']) ?>
                   <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>

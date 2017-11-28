@@ -137,7 +137,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Users', 'action' => 'edit', $users->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Users', 'action' => 'edit', $users->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
@@ -227,7 +227,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Avaliacaos', 'action' => 'view', $avaliacaos->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Avaliacaos', 'action' => 'edit', $avaliacaos->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Avaliacaos', 'action' => 'edit', $avaliacaos->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Avaliacaos', 'action' => 'delete', $avaliacaos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $avaliacaos->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
@@ -299,7 +299,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Caracteristicas', 'action' => 'view', $caracteristicas->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Caracteristicas', 'action' => 'edit', $caracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Caracteristicas', 'action' => 'edit', $caracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Caracteristicas', 'action' => 'delete', $caracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $caracteristicas->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
@@ -371,7 +371,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Categorias', 'action' => 'view', $categorias->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Categorias', 'action' => 'edit', $categorias->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Categorias', 'action' => 'edit', $categorias->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Categorias', 'action' => 'delete', $categorias->id], ['confirm' => __('Are you sure you want to delete # {0}?', $categorias->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
@@ -452,7 +452,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
@@ -596,7 +596,7 @@
                                                                         <td class="actions">
                                     <?= $this->Html->link(__('View'), ['controller' => 'Estabelecimentos', 'action' => 'view', $estabelecimentos->id], ['class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->Link('<i class="fa fa-pencil"></i>', ['controller' => 'Estabelecimentos', 'action' => 'edit', $estabelecimentos->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Estabelecimentos', 'action' => 'edit', $estabelecimentos->id], ['class'=>'btn btn-warning btn-xs']) ?>
 
                                     <?= $this->Form->postLink(__('Delete'), ['controller' => 'Estabelecimentos', 'action' => 'delete', $estabelecimentos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentos->id), 'class'=>'btn btn-danger btn-xs']) ?>    
                                     </td>
