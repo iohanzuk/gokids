@@ -28,13 +28,13 @@
             echo $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => true]);
             echo $this->Form->input('nome');
             echo $this->Form->input('descricao');
-            echo $this->Form->input('endereco');
+            echo $this->Form->input('endereco',['label'=>'Endereço']);
             echo $this->Form->input('cep');
             echo $this->Form->input('numero');
             echo $this->Form->input('bairro');
             echo $this->Form->input('telefone');
             echo $this->Form->input('celular');
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
+            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true, 'type'=>'hidden']);
           ?>
           </div>
           <!-- /.box-body -->
