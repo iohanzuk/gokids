@@ -127,7 +127,7 @@
                                     </td>
 
                                     <td>
-                                        <?= h($estabelecimentoCaracteristicas->caracteristica_id) ?>
+                                        <?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?>
                                     </td>
 
                                     <td>

@@ -39,7 +39,7 @@ class EstabelecimentosController extends AppController
     public function view($id = null)
     {
         $estabelecimento = $this->Estabelecimentos->get($id, [
-            'contain' => ['Categorias', 'Users', 'Avaliacaos', 'EstabelecimentoCaracteristicas']
+            'contain' => ['Categorias', 'Users', 'Avaliacaos', 'EstabelecimentoCaracteristicas'=>['Caracteristicas']]
         ]);
 
         $this->set('estabelecimento', $estabelecimento);
