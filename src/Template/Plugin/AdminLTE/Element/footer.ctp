@@ -1,8 +1,7 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
+        Desenvolvido por:<b> Grupo C.</b>
     </div>
-    <strong>Copyright &copy; 2017 <a href="https://www.facom.ufms.br/">FACOM - UFMS</a> Grupo C.</strong> All rights
-    reserved.
+    <strong>Trabalho de Prog Web - <a href="https://www.facom.ufms.br/">FACOM - UFMS</a></strong>.
 </footer>
 

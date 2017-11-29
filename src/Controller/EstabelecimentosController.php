@@ -53,11 +53,13 @@ class EstabelecimentosController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Caracteristicas');
         $estabelecimento = $this->Estabelecimentos->newEntity();
+        $caracteristicas = $this->Caracteristicas->find('list');
         if ($this->request->is('post')) {
             $estabelecimento = $this->Estabelecimentos->patchEntity($estabelecimento, $this->request->data);
             if ($this->Estabelecimentos->save($estabelecimento)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Estabelecimento'));
+                $this->Flash->success(__('O {0} foi salvo.', 'Estabelecimento'));
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Estabelecimento'));
@@ -65,7 +67,7 @@ class EstabelecimentosController extends AppController
         }
         $categorias = $this->Estabelecimentos->Categorias->find('list', ['limit' => 200]);
         $users = $this->Estabelecimentos->Users->find('list', ['limit' => 200]);
-        $this->set(compact('estabelecimento', 'categorias', 'users'));
+        $this->set(compact('estabelecimento', 'categorias', 'users', 'caracteristicas'));
         $this->set('_serialize', ['estabelecimento']);
     }
 
