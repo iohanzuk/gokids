@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     Estabelecimentos
-    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
 <section class="content">
@@ -49,4 +49,5 @@
             </div>
         </div>
     <?php endforeach;?>
+    <div class="clearfix"></div>
 </section>
