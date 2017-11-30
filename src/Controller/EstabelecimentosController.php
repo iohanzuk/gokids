@@ -116,4 +116,37 @@ class EstabelecimentosController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function fill()
+    {
+        $this->viewBuilder()->setLayout('ajax');
+
+        $termo = $this->request->getData('termo');
+        $size = $this->request->getData('size');
+        $aux = $this->request->getData('page');
+        $page = ((!isset($aux) || $aux < 1) ? 1 : $aux);
+
+        if (!isset($termo))
+            $termo = '';
+        if (!isset($size) || $size < 1)
+            $size = 10;
+
+        $query = $this->Estabelecimentos->find('all')
+            ->where(['Estabelecimentos.nome LIKE ' => '%' . $termo . '%']);
+        $cont = $query->count();
+
+        $ret["more"] = (($size * ($page - 1)) >= (int)$cont) ? false : true;
+        $ret["total"] = $cont;
+        $ret["dados"] = array();
+
+        $query->limit($size);
+        $query->offset($size * ($page - 1));
+
+        foreach ($query as $d) {
+            $ret["dados"][] = array('id' => $d->id, 'text' => $d->nome);
+        }
+        echo json_encode($ret);
+
+        $this->autoRender = false;
+    }
 }

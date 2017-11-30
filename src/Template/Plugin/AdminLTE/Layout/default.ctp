@@ -10,7 +10,7 @@
     <!-- Bootstrap 3.3.5 -->
     <?php echo $this->Html->css('AdminLTE./bootstrap/css/bootstrap.min'); ?>
     <!-- Select2 -->
-    <?php echo $this->Html->css('AdminLTE./css/css/AdminLTE-select2.min'); ?>
+    <?php echo $this->Html->css('select2.min'); ?>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -81,12 +81,30 @@
 <!-- FastClick -->
 <?php echo $this->Html->script('AdminLTE./plugins/fastclick/fastclick'); ?>
 <!-- Select2 -->
-<?php echo $this->Html->script('AdminLTE./plugins/select2/select2.full.min'); ?>
+<?php echo $this->Html->script('select2.full.min'); ?>
 <!-- AdminLTE App -->
 <?php echo $this->Html->script('AdminLTE./js/app.min'); ?>
 <!-- AdminLTE for demo purposes -->
 <?php echo $this->fetch('script'); ?>
 <?php echo $this->fetch('scriptBottom'); ?>
+<?php
+$root = strstr(ROOT,'public_html');
+$root = strstr($root,'/');
+if($root=="") {
+    $site_path = dirname($_SERVER["SCRIPT_NAME"]);
+    if ($site_path == '/')
+        $site_path = '';
+    $pos = strripos($site_path, "webroot");
+    $ur = substr($site_path,0,$pos);
+    if(substr($ur,-1)=="/") {
+        $root = substr($ur,0,-1);
+    }else{
+        $root = $ur;
+    }
+}
+echo "<script>var site_path =\"".$root."\";</script>";
+?>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $(".navbar .menu").slimscroll({
@@ -99,6 +117,41 @@
         if (!a.parent().hasClass('treeview') && !a.parent().parent().hasClass('pagination')) {
             a.parent().addClass('active').parents('.treeview').addClass('active');
         }
+        $(document).find('[data="select"]').each(function () {
+            var controller = $(this).attr('controller');
+            var action = $(this).attr('action');
+            $(this).select2({
+                language: 'pt-BR',
+                theme: 'bootstrap',
+                width: '100%',
+                placeholder: {
+                    id: '-1',
+                    text: 'Selecione'
+                },
+                minimumInputLength: 1,
+                ajax: {
+                    url: site_path + "/" + controller + "/" + action,
+                    dataType: 'json',
+                    cache: true,
+                    type: 'post',
+                    data: function (params) {
+                        return {
+                            termo: params.term,
+                            size: 20,
+                            page: params.page
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.dados,
+                            pagination: {
+                                more: data.more
+                            }
+                        }
+                    }
+                }
+            });
+        });
     });
 </script>
 </body>
