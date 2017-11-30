@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     User Tipos
-    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], [ 'escape'=>false, 'class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
 
@@ -12,7 +12,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title"><?= __('List of') ?> User Tipos</h3>
+          <h3 class="box-title"><?= __('Lista de') ?> User Tipos</h3>
           <div class="box-tools">
             <form action="<?php echo $this->Url->build(); ?>" method="POST">
               <div class="input-group input-group-sm"  style="width: 180px;">
@@ -31,7 +31,7 @@
               <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('nome') ?></th>
-                <th><?= __('Actions') ?></th>
+                <th><?= __('Ações') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -40,9 +40,9 @@
                 <td><?= $this->Number->format($userTipo->id) ?></td>
                 <td><?= h($userTipo->nome) ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', $userTipo->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', $userTipo->id], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $userTipo->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $userTipo->id], [ 'escape'=>false, 'class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['action' => 'edit', $userTipo->id], [ 'escape'=>false, 'class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['action' => 'delete', $userTipo->id], ['confirm' => __('Confirm to delete this entry?'), 'escape'=>false, 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

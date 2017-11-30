@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     Estabelecimentos
-    <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], [ 'escape'=>false, 'class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
 <section class="content">

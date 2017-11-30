@@ -87,7 +87,7 @@
                                         
                                                                     
                                 <th>
-                                    <?php echo __('Actions'); ?>
+                                    <?php echo __('Ações'); ?>
                                 </th>
                             </tr>
 
@@ -119,11 +119,11 @@
                                     </td>
                                     
                                                                         <td class="actions">
-                                    <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id], ['class'=>'btn btn-info btn-xs']) ?>
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'Users', 'action' => 'view', $users->id], [ 'escape'=>false, 'class'=>'btn btn-info btn-xs']) ?>
 
-                                    <?= $this->Html->link(__('Editar'), ['controller' => 'Users', 'action' => 'edit', $users->id], ['class'=>'btn btn-warning btn-xs']) ?>
+                                    <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'Users', 'action' => 'edit', $users->id], [ 'escape'=>false, 'class'=>'btn btn-warning btn-xs']) ?>
 
-                                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id), 'class'=>'btn btn-danger btn-xs']) ?>    
+                                    <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', $users->id), 'escape'=>false, 'class'=>'btn btn-danger btn-xs']) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

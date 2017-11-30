@@ -2,7 +2,7 @@
 <section class="content-header">
   <h1>
     Estabelecimento Caracteristicas
-    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], ['class'=>'btn btn-success btn-xs']) ?></div>
+    <div class="pull-right"><?= $this->Html->link(__('New'), ['action' => 'add'], [ 'escape'=>false, 'class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
 </section>
 
@@ -12,7 +12,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title"><?= __('List of') ?> Estabelecimento Caracteristicas</h3>
+          <h3 class="box-title"><?= __('Lista de') ?> Estabelecimento Caracteristicas</h3>
           <div class="box-tools">
             <form action="<?php echo $this->Url->build(); ?>" method="POST">
               <div class="input-group input-group-sm"  style="width: 180px;">
@@ -33,7 +33,7 @@
                 <th><?= $this->Paginator->sort('estabelecimento_id') ?></th>
                 <th><?= $this->Paginator->sort('caracteristica_id') ?></th>
                 <th><?= $this->Paginator->sort('user_id') ?></th>
-                <th><?= __('Actions') ?></th>
+                <th><?= __('Ações') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -44,9 +44,9 @@
                 <td><?= $estabelecimentoCaracteristica->has('caracteristica') ? $this->Html->link($estabelecimentoCaracteristica->caracteristica->id, ['controller' => 'Caracteristicas', 'action' => 'view', $estabelecimentoCaracteristica->caracteristica->id]) : '' ?></td>
                 <td><?= $estabelecimentoCaracteristica->has('user') ? $this->Html->link($estabelecimentoCaracteristica->user->id, ['controller' => 'Users', 'action' => 'view', $estabelecimentoCaracteristica->user->id]) : '' ?></td>
                 <td class="actions" style="white-space:nowrap">
-                  <?= $this->Html->link(__('View'), ['action' => 'view', $estabelecimentoCaracteristica->id], ['class'=>'btn btn-info btn-xs']) ?>
-                  <?= $this->Html->link(__('Editar'), ['action' => 'edit', $estabelecimentoCaracteristica->id], ['class'=>'btn btn-warning btn-xs']) ?>
-                  <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $estabelecimentoCaracteristica->id], ['confirm' => __('Confirm to delete this entry?'), 'class'=>'btn btn-danger btn-xs']) ?>
+                  <?= $this->Html->link('<i class="fa fa-eye"></i>', ['action' => 'view', $estabelecimentoCaracteristica->id], [ 'escape'=>false, 'class'=>'btn btn-info btn-xs']) ?>
+                  <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['action' => 'edit', $estabelecimentoCaracteristica->id], [ 'escape'=>false, 'class'=>'btn btn-warning btn-xs']) ?>
+                  <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['action' => 'delete', $estabelecimentoCaracteristica->id], ['confirm' => __('Confirm to delete this entry?'), 'escape'=>false, 'class'=>'btn btn-danger btn-xs']) ?>
                 </td>
               </tr>
             <?php endforeach; ?>

@@ -111,7 +111,7 @@
 
 
                                 <th>
-                                    <?php echo __('Actions'); ?>
+                                    <?php echo __('Ações'); ?>
                                 </th>
                             </tr>
 
@@ -135,11 +135,11 @@
                                     </td>
 
                                     <td class="actions">
-                                        <?= $this->Html->link(__('View'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['class' => 'btn btn-info btn-xs']) ?>
+                                        <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['escape'=>false,'class' => 'btn btn-info btn-xs']) ?>
 
-                                        <?= $this->Html->link(__('Editar'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['class' => 'btn btn-warning btn-xs']) ?>
+                                        <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['escape'=>false,'class' => 'btn btn-warning btn-xs']) ?>
 
-                                        <?= $this->Form->postLink(__('Delete'), ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'class' => 'btn btn-danger btn-xs']) ?>
+                                        <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id),'escape'=>false, 'class' => 'btn btn-danger btn-xs']) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -197,7 +197,7 @@
 
 
                                 <th>
-                                    <?php echo __('Actions'); ?>
+                                    <?php echo __('Ações'); ?>
                                 </th>
                             </tr>
 
@@ -225,11 +225,11 @@
                                     </td>
 
                                     <td class="actions">
-                                        <?= $this->Html->link(__('View'), ['controller' => 'Avaliacaos', 'action' => 'view', $avaliacaos->id], ['class' => 'btn btn-info btn-xs']) ?>
+                                        <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'Avaliacaos', 'action' => 'view', $avaliacaos->id], ['escape'=>false, 'class' => 'btn btn-info btn-xs']) ?>
 
-                                        <?= $this->Html->link(__('Editar'), ['controller' => 'Avaliacaos', 'action' => 'edit', $avaliacaos->id], ['class' => 'btn btn-warning btn-xs']) ?>
+                                        <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'Avaliacaos', 'action' => 'edit', $avaliacaos->id], ['escape'=>false, 'class' => 'btn btn-warning btn-xs']) ?>
 
-                                        <?= $this->Form->postLink(__('Delete'), ['controller' => 'Avaliacaos', 'action' => 'delete', $avaliacaos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $avaliacaos->id), 'class' => 'btn btn-danger btn-xs']) ?>
+                                        <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'Avaliacaos', 'action' => 'delete', $avaliacaos->id], ['confirm' => __('Are you sure you want to delete # {0}?', $avaliacaos->id), 'escape'=>false, 'class' => 'btn btn-danger btn-xs']) ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
