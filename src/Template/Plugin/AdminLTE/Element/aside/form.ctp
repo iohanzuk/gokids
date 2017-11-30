@@ -8,10 +8,11 @@
 <!--    </div>-->
 <!--</form>-->
 
-<?= $this->Form->create('Estabelecimentos', ['method' => 'get', 'controller' => 'Estabelecimentos', 'url' => 'index'],
-    ['class' => 'sidebar-form']) ?>
-<div class="input-group">
-    <?= $this->Form->input('estabelecimento_teste', ['type' => 'select', 'controller' => 'Estabelecimentos',
-        'action' => 'fill', 'label'=>'','data'=>'select']); ?>
+<?= $this->Form->create('Estabelecimentos', ['method' => 'get','class' => 'sidebar-form', 'url' => '/Estabelecimentos/index']) ?>
+<div class="col-md-12">
+    <div class="input-group">
+        <?= $this->Form->input('estabelecimento_teste', ['type' => 'select', 'controller' => 'Estabelecimentos',
+            'action' => 'fill', 'label' => '', 'data' => 'select', 'class' => 'form-control']); ?>
+    </div>
 </div>
 <?= $this->Form->end() ?>

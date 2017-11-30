@@ -126,7 +126,7 @@ echo "<script>var site_path =\"".$root."\";</script>";
                 width: '100%',
                 placeholder: {
                     id: '-1',
-                    text: 'Selecione'
+                    text: 'Estabelecimento...'
                 },
                 minimumInputLength: 1,
                 ajax: {
