@@ -1,54 +1,76 @@
-# CakePHP Application Skeleton
+# Este Projeto foi contruido utilizando o CAKE PHP e algumas Libs
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+## Installation - Instalação
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
+Para instalar é necessário:
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+### Composer -> donwload e instalção https://getcomposer.org/download/
+### MariaDB -> download e instalação https://downloads.mariadb.org/
+### Git -> download e instalação https://git-scm.com/
 
-## Installation
+Após instalados os softwares necessários, deve-se clonar este repositório.
+É necessário criar uma base de dados no Maria DB.
+Agora abra o terminal na pasta do projeto e execute o seguinte comando:
+#### composer install
+Após terminar de instalar as dependências vá até a pasta config, abrar o arquivo 
+app.php, localize a configuração do DataSource que deve estar da seguinte maneira:
+ 'Datasources' => [
+        'default' => [
+            'className' => 'Cake\Database\Connection',
+            'driver' => 'Cake\Database\Driver\Mysql',
+            'persistent' => false,
+            'host' => 'localhost',
+            /**
+             * CakePHP will use the default DB port based on the driver selected
+             * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
+             * the following line and set the port accordingly
+             */
+            //'port' => 'non_standard_port_number',
+            'username' => 'my_user',
+            'password' => 'my_password',
+            'database' => 'my_app',
+            'encoding' => 'utf8',
+            'timezone' => 'UTC',
+            'flags' => [],
+            'cacheMetadata' => true,
+            'log' => false,
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+            /**
+             * Set identifier quoting to true if you are using reserved words or
+             * special characters in your table or column names. Enabling this
+             * setting will result in queries built using the Query Builder having
+             * identifiers quoted when creating SQL. It should be noted that this
+             * decreases performance because each query needs to be traversed and
+             * manipulated before being executed.
+             */
+            'quoteIdentifiers' => false,
 
-If Composer is installed globally, run
+            /**
+             * During development, if using MySQL < 5.6, uncommenting the
+             * following line could boost the speed at which schema metadata is
+             * fetched from the database. It can also be set directly with the
+             * mysql configuration directive 'innodb_stats_on_metadata = 0'
+             * which is the recommended value in production environments
+             */
+            //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+            'url' => env('DATABASE_URL', null),
+        ]
+Substitua o 'my_user' pelo seu usário do banco de dados.
+o 'my_password' pela senha do teu banco.
+e o 'my_app' pelo nome da base de dados criada.
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+Feito isso agora basta entar no diretorio bin do projeto via terminal
+e executar o seguinte comando:
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+### cake migrations migrate
+ou 
+### ./cake migrations migrate
 
-You should now be able to visit the path to where you installed the app and see the default home page.
+Pronto nossas tabelas foram criadas e a aplicação está pronta para uso.
 
-### Installation of 3.next
+# Libs utilizadas.
 
-In case you want to try the unstable branch:
+### Bootstrap / AdminLTE
 
-```bash
-composer create-project --prefer-dist cakephp/app=dev-3.next app
-```
 
-You may then install specific RC, for example:
-
-```bash
-cd app;
-composer require cakephp/cakephp:3.4.0-RC3
-```
-
-## Update
-
-Since this skeleton is a starting point for your application and various files would have been modified as per your needs, there isn't a way to provide automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
-
-## Layout
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) CSS framework by default. You can, however, replace it with any other library or custom styles.
