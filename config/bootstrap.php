@@ -214,10 +214,10 @@ Type::build('timestamp')
  */
 Plugin::load('AdminLTE', ['bootstrap' => true, 'routes' => true]);
 Configure::write('Theme', [
-    'title' => 'Baby Friends',
+    'title' => 'Go Kids CG',
     'logo' => [
-        'mini' => '<b>BB</b>F',
-        'large' => '<b>Baby</b>Friends'
+        'mini' => '<b>GK</b> CG',
+        'large' => '<b>Go Kids</b>CG'
     ],
     'login' => [
         'show_remember' => true,
@@ -225,7 +225,7 @@ Configure::write('Theme', [
         'show_social' => true
     ],
     'folder' => ROOT,
-    'skin' => 'blue-light' // default is 'blue'
+    'skin' => 'yellow-light' // default is 'blue'
 ]);
 /*
  * Only try to load DebugKit in development mode

@@ -57,10 +57,10 @@ class AvaliacaosController extends AppController
         if ($this->request->is('post')) {
             $avaliacao = $this->Avaliacaos->patchEntity($avaliacao, $this->request->data);
             if ($this->Avaliacaos->save($avaliacao)) {
-                $this->Flash->success(__('The {0} has been saved.', 'Avaliacao'));
-                return $this->redirect(['action' => 'index']);
+                $this->Flash->success(__('A {0} foi cadastrada com sucesso.', 'Avaliação'));
+                return $this->redirect(['controller' => 'Estabelecimentos', 'action' => 'view', $avaliacao->estabelecimento_id]);
             } else {
-                $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Avaliacao'));
+                $this->Flash->error(__('Houve um problema no cadastro de sua {0}. Tente novamente mais tarde', 'Avaliação'));
             }
         }
         $estabelecimentos = $this->Avaliacaos->Estabelecimentos->find('list', ['limit' => 200]);

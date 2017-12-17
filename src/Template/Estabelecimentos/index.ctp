@@ -4,6 +4,35 @@
     Estabelecimentos
     <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], [ 'escape'=>false, 'class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
+    <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= __('Filtros') ?></h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+            <form action="<?php echo $this->Url->build(); ?>" method="POST">
+                <div class="box-body">
+
+                    <div class='col-md-4'>
+                        <?= $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => "Selecione", 'class' => 'selectpicker form-control', 'data-live-search' => true, 'data-size' => "5"]); ?>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <?= $this->Form->input('estabelecimento_teste', ['label'=>'Estabelecimento','type' => 'select', 'controller' => 'Estabelecimentos',
+                            'action' => 'fill', 'label' => '', 'data' => 'select', 'class' => 'form-control']); ?>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <?= $this->Form->input(__('Pesquisar'), ['type' => 'submit', 'class' => 'btn btn-default']) ?>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
 <section class="content">
     <?php foreach ($estabelecimentos as $estabelecimento):?>

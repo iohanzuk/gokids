@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -20,12 +21,14 @@ class EstabelecimentosController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Categorias', 'Users']
-        ];
-        $estabelecimentos = $this->paginate($this->Estabelecimentos);
-
-        $this->set(compact('estabelecimentos'));
+        $estabelecimentos = $this->Estabelecimentos->find('all')
+            ->contain(['Categorias','Users']);
+        if($this->request->is('POST')){
+            if(!empty($this->request->getData('categoria_id')))
+                $estabelecimentos->andWhere(['Estabelecimentos.categoria_id'=>$this->request->getData('categoria_id')]);
+        }
+        $categorias = $this->Estabelecimentos->Categorias->find('list');
+        $this->set(compact('estabelecimentos','categorias'));
         $this->set('_serialize', ['estabelecimentos']);
     }
 
@@ -38,11 +41,14 @@ class EstabelecimentosController extends AppController
      */
     public function view($id = null)
     {
+        $this->loadModel('Avaliacaos');
         $estabelecimento = $this->Estabelecimentos->get($id, [
-            'contain' => ['Categorias', 'Users', 'Avaliacaos', 'EstabelecimentoCaracteristicas'=>['Caracteristicas']]
+            'contain' => ['Categorias', 'Users', 'Avaliacaos', 'EstabelecimentoCaracteristicas' => ['Caracteristicas']]
         ]);
+        $avaliacaos = $this->Avaliacaos->find('all')->where(['Avaliacaos.estabelecimento_id'=>$estabelecimento->id])
+            ->order(['created' => 'DESC']);
 
-        $this->set('estabelecimento', $estabelecimento);
+        $this->set(compact('estabelecimento','avaliacaos'));
         $this->set('_serialize', ['estabelecimento']);
     }
 
@@ -54,11 +60,21 @@ class EstabelecimentosController extends AppController
     public function add()
     {
         $this->loadModel('Caracteristicas');
+        $this->loadModel('EstabelecimentoCaracteristicas');
         $estabelecimento = $this->Estabelecimentos->newEntity();
         $caracteristicas = $this->Caracteristicas->find('list');
         if ($this->request->is('post')) {
             $estabelecimento = $this->Estabelecimentos->patchEntity($estabelecimento, $this->request->data);
             if ($this->Estabelecimentos->save($estabelecimento)) {
+                if(!empty($this->request->getData('caracteristica_id'))){
+                    $carac = $this->request->getData('caracteristica_id');
+                    foreach ($carac as $c){
+                        $est_carac = $this->EstabelecimentoCaracteristicas->newEntity();
+                        $est_carac->caracteristica_id = $c;
+                        $est_carac->estabelecimento_id = $estabelecimento->id;
+                        $this->EstabelecimentoCaracteristicas->save($est_carac);
+                    }
+                }
                 $this->Flash->success(__('O {0} foi salvo.', 'Estabelecimento'));
                 return $this->redirect(['action' => 'index']);
             } else {

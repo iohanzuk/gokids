@@ -16,6 +16,8 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Routing\Router;
+
 
 /**
  * Application Controller
@@ -66,5 +68,6 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+        $this->set('site_path',Router::fullBaseUrl());
     }
 }

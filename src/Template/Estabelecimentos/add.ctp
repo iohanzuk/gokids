@@ -34,6 +34,8 @@
             echo $this->Form->input('bairro');
             echo $this->Form->input('telefone');
             echo $this->Form->input('celular');
+            echo $this->Form->input('caracteristica_id',['class'=>'form-control select2 select2-hidden-accessible',
+                'options'=>$caracteristicas,'empty'=>true,'label'=>'Caracteristicas','multiple'=>'multiple']);
             echo $this->Form->input('user_id', ['options' => $users, 'empty' => true, 'type'=>'hidden']);
           ?>
           </div>

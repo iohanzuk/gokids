@@ -84,6 +84,9 @@
 <?php echo $this->Html->script('select2.full.min'); ?>
 <!-- AdminLTE App -->
 <?php echo $this->Html->script('AdminLTE./js/app.min'); ?>
+<!-- Footer GO Kids -->
+<?php echo $this->element('footer_gokids'); ?>
+
 <!-- AdminLTE for demo purposes -->
 <?php echo $this->fetch('script'); ?>
 <?php echo $this->fetch('scriptBottom'); ?>
@@ -117,41 +120,6 @@ echo "<script>var site_path =\"".$root."\";</script>";
         if (!a.parent().hasClass('treeview') && !a.parent().parent().hasClass('pagination')) {
             a.parent().addClass('active').parents('.treeview').addClass('active');
         }
-        $(document).find('[data="select"]').each(function () {
-            var controller = $(this).attr('controller');
-            var action = $(this).attr('action');
-            $(this).select2({
-                language: 'pt-BR',
-                theme: 'bootstrap',
-                width: '100%',
-                placeholder: {
-                    id: '-1',
-                    text: 'Estabelecimento...'
-                },
-                minimumInputLength: 1,
-                ajax: {
-                    url: site_path + "/" + controller + "/" + action,
-                    dataType: 'json',
-                    cache: true,
-                    type: 'post',
-                    data: function (params) {
-                        return {
-                            termo: params.term,
-                            size: 20,
-                            page: params.page
-                        };
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: data.dados,
-                            pagination: {
-                                more: data.more
-                            }
-                        }
-                    }
-                }
-            });
-        });
     });
 </script>
 </body>
