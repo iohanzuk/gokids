@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property string $estabelecimento
  * @property string $descricao
  * @property \Cake\I18n\FrozenTime $created
- * @property \Cake\I18n\FrozenTime $modifield
+ * @property \Cake\I18n\FrozenTime $modified
  * @property int $user_id
  *
  * @property \App\Model\Entity\User $user

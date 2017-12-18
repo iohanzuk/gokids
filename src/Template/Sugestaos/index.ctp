@@ -31,7 +31,6 @@
               <tr>
                 <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('estabelecimento') ?></th>
-                <th><?= $this->Paginator->sort('modifield') ?></th>
                 <th><?= $this->Paginator->sort('user_id') ?></th>
                 <th><?= __('Actions') ?></th>
               </tr>
@@ -40,9 +39,8 @@
             <?php foreach ($sugestaos as $sugestao): ?>
               <tr>
                 <td><?= $this->Number->format($sugestao->id) ?></td>
-                <td><?= h($sugestao->estabelecimento) ?></td>
-                <td><?= h($sugestao->modifield) ?></td>
-                <td><?= $sugestao->has('user') ? $this->Html->link($sugestao->user->id, ['controller' => 'Users', 'action' => 'view', $sugestao->user->id]) : '' ?></td>
+                <td><?= $sugestao->estabelecimento ?></td>
+                <td><?= $sugestao->user?></td>
                 <td class="actions" style="white-space:nowrap">
                   <?= $this->Html->link(__('View'), ['action' => 'view', $sugestao->id], ['class'=>'btn btn-info btn-xs']) ?>
                   <?= $this->Html->link(__('Edit'), ['action' => 'edit', $sugestao->id], ['class'=>'btn btn-warning btn-xs']) ?>
@@ -55,9 +53,6 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer clearfix">
-          <ul class="pagination pagination-sm no-margin pull-right">
-            <?php echo $this->Paginator->numbers(); ?>
-          </ul>
         </div>
       </div>
       <!-- /.box -->

@@ -32,11 +32,7 @@
                                                                                                 
                                             
                                                                                                                                             
-                                                                                                                                                            <dt><?= __('Modifield') ?></dt>
-                                <dd>
-                                    <?= h($sugestao->modifield) ?>
-                                </dd>
-                                                                                                    
+                                                                                                                                                                                                
                                             
                                                                         <dt><?= __('Descricao') ?></dt>
                             <dd>

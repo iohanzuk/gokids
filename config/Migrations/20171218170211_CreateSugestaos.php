@@ -27,7 +27,7 @@ class CreateSugestaos extends AbstractMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('modifield', 'datetime', [
+        $table->addColumn('modified', 'datetime', [
             'default' => null,
             'null' => false,
         ]);

@@ -27,6 +27,7 @@
           <?php
             echo $this->Form->input('estabelecimento');
             echo $this->Form->input('descricao');
+            echo $this->Form->input('user_id', ['type' => 'hidden','value'=>$user_logado]);
           ?>
           </div>
           <!-- /.box-body -->

@@ -27,7 +27,6 @@
           <?php
             echo $this->Form->input('estabelecimento');
             echo $this->Form->input('descricao');
-            echo $this->Form->input('modifield');
             echo $this->Form->input('user_id', ['options' => $users]);
           ?>
           </div>

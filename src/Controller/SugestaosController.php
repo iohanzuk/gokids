@@ -23,7 +23,7 @@ class SugestaosController extends AppController
         $this->paginate = [
             'contain' => ['Users']
         ];
-        $sugestaos = $this->paginate($this->Sugestaos);
+        $sugestaos = $this->Sugestaos->find('all');
 
         $this->set(compact('sugestaos'));
         $this->set('_serialize', ['sugestaos']);
@@ -58,7 +58,7 @@ class SugestaosController extends AppController
             $sugestao = $this->Sugestaos->patchEntity($sugestao, $this->request->data);
             if ($this->Sugestaos->save($sugestao)) {
                 $this->Flash->success(__('The {0} has been saved.', 'Sugestao'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Estabelecimentos','action' => 'index']);
             } else {
                 $this->Flash->error(__('The {0} could not be saved. Please, try again.', 'Sugestao'));
             }

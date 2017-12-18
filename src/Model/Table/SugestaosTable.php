@@ -35,7 +35,7 @@ class SugestaosTable extends Table
         parent::initialize($config);
 
         $this->setTable('sugestaos');
-        $this->setDisplayField('id');
+        $this->setDisplayField('empresa');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -65,11 +65,6 @@ class SugestaosTable extends Table
         $validator
             ->requirePresence('descricao', 'create')
             ->notEmpty('descricao');
-
-        $validator
-            ->dateTime('modifield')
-            ->requirePresence('modifield', 'create')
-            ->notEmpty('modifield');
 
         return $validator;
     }
