@@ -11,6 +11,7 @@
 
 <!-- Main content -->
 <section class="content">
+
     <div class="row">
         <div class="col-md-12">
             <div class="box box-solid">
@@ -103,7 +104,7 @@
                                 <tr>
 
                                     <td>
-                                       <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
+                                        <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
                                     </td>
 
                                     <td class="actions">
@@ -155,19 +156,21 @@
                 <!-- /.box-header -->
                 <div class="box-body">
 
-                    <form enctype="multipart/form-data" method="post" action="<?= $this->Url->build(['controller'=>'Avaliacaos', 'action'=>'add'])?>">
+                    <form enctype="multipart/form-data" method="post"
+                          action="<?= $this->Url->build(['controller' => 'Avaliacaos', 'action' => 'add']) ?>">
 
                         <div class="box-body">
 
                             <div class="col-md-12 form-group">
-                                <?php echo $this->Form->input('nota',['type'=>'number']) ?>
+                                <?php echo $this->Form->input('nota', ['type' => 'number']) ?>
                             </div>
 
                             <div class='col-md-12 form-group'>
-                                <?php echo $this->Form->input('comentario',['type'=>'textarea']) ?>
+                                <?php echo $this->Form->input('comentario', ['type' => 'textarea']) ?>
                             </div>
 
-                            <input type="hidden" name="estabelecimento_id" id="estabelecimento_id" value="<?= $estabelecimento->id ?>">
+                            <input type="hidden" name="estabelecimento_id" id="estabelecimento_id"
+                                   value="<?= $estabelecimento->id ?>">
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-right">
@@ -206,8 +209,9 @@
                     <span class="time"><i
                                 class="fa fa-clock-o"></i> <?= date_format($avaliacao->created, 'H:i') ?></span>
 
-                    <h2 class="timeline-header">Nota: <strong><?= $avaliacao->nota?></strong> <i class="fa fa-start"></i> <i class="fa fa-start"></i>
-                        <?php for($i=0; $i < $avaliacao->nota; $i++){
+                    <h2 class="timeline-header">Nota: <strong><?= $avaliacao->nota ?></strong> <i
+                                class="fa fa-start"></i> <i class="fa fa-start"></i>
+                        <?php for ($i = 0; $i < $avaliacao->nota; $i++) {
                             echo '<i class="fa fa-start"></i>';
                         } ?></h2>
 

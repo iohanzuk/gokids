@@ -39,6 +39,10 @@ class Estabelecimento extends Entity
      */
     protected $_accessible = [
         '*' => true,
-        'id' => false
+        'id' => false,
+        'logo' => true,
+        'logo_dir' => true,
+        'fundo_dir' => true,
+        'fundo' => true,
     ];
 }

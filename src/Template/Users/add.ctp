@@ -1,11 +1,11 @@
 <section class="content-header">
   <h1>
-    User
+    Usuário
     <small><?= __('Add') ?></small>
   </h1>
   <ol class="breadcrumb">
     <li>
-    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Back'), ['action' => 'index'], ['escape' => false]) ?>
+    <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Back'), ['controller'=>'Estabelecimentos','action' => 'index'], ['escape' => false]) ?>
     </li>
   </ol>
 </section>
@@ -17,9 +17,6 @@
     <div class="col-md-12">
       <!-- general form elements -->
       <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= __('Form') ?></h3>
-        </div>
         <!-- /.box-header -->
         <!-- form start -->
         <?= $this->Form->create($user, array('role' => 'form')) ?>
@@ -27,9 +24,14 @@
           <?php
             echo $this->Form->input('nome');
             echo $this->Form->input('login');
-            echo $this->Form->input('senha');
-            echo $this->Form->input('user_tipo_id', ['options' => $userTipos, 'empty' => true]);
-            echo $this->Form->input('user_id');
+            echo $this->Form->input('senha',['type'=>'password']);
+            if(!empty($user_logado))
+                if($user_logado->user_tipo_id = 1)
+                    echo $this->Form->input('user_tipo_id', ['options' => $userTipos, 'empty' => true]);
+                else
+                    echo $this->Form->input('user_tipo_id', ['value' => 2, 'empty' => true,'type'=>'hidden']);
+            else
+                echo $this->Form->input('user_tipo_id', ['value' => 2, 'empty' => true,'type'=>'hidden']);
           ?>
           </div>
           <!-- /.box-body -->

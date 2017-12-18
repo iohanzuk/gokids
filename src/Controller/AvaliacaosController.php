@@ -56,6 +56,7 @@ class AvaliacaosController extends AppController
         $avaliacao = $this->Avaliacaos->newEntity();
         if ($this->request->is('post')) {
             $avaliacao = $this->Avaliacaos->patchEntity($avaliacao, $this->request->data);
+            $avaliacao->user_id = $this->Auth->user('id');
             if ($this->Avaliacaos->save($avaliacao)) {
                 $this->Flash->success(__('A {0} foi cadastrada com sucesso.', 'Avaliação'));
                 return $this->redirect(['controller' => 'Estabelecimentos', 'action' => 'view', $avaliacao->estabelecimento_id]);

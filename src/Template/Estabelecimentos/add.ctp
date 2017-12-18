@@ -22,11 +22,13 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($estabelecimento, array('role' => 'form')) ?>
+        <?= $this->Form->create($estabelecimento, array('role' => 'form', 'type'=>'file')) ?>
           <div class="box-body">
           <?php
             echo $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => true]);
             echo $this->Form->input('nome');
+            echo $this->Form->input('logo',['type'=>'file']);
+            echo $this->Form->input('fundo',['type'=>'file']);
             echo $this->Form->input('descricao');
             echo $this->Form->input('endereco',['label'=>'Endereço']);
             echo $this->Form->input('cep');

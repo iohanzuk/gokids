@@ -16,7 +16,6 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\CategoriasTable|\Cake\ORM\Association\HasMany $Categorias
  * @property \App\Model\Table\EstabelecimentoCaracteristicasTable|\Cake\ORM\Association\HasMany $EstabelecimentoCaracteristicas
  * @property \App\Model\Table\EstabelecimentosTable|\Cake\ORM\Association\HasMany $Estabelecimentos
- * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\HasMany $Users
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
  * @method \App\Model\Entity\User newEntity($data = null, array $options = [])
@@ -66,9 +65,6 @@ class UsersTable extends Table
             'foreignKey' => 'user_id'
         ]);
         $this->hasMany('Estabelecimentos', [
-            'foreignKey' => 'user_id'
-        ]);
-        $this->hasMany('Users', [
             'foreignKey' => 'user_id'
         ]);
     }

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var extension = ["jpg", "gif", "png", "jpeg", "rar", "txt", "pdf", "doc", "docx", "xls", "csv", "potx", "pot", "ppt"];
+    var extension = ["jpg","png", "jpeg"];
     $('.input-file').each(function () {
         $(this).fileinput({
             showUpload: false,

@@ -4,6 +4,9 @@
     Estabelecimentos
     <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], [ 'escape'=>false, 'class'=>'btn btn-success btn-xs']) ?></div>
   </h1>
+
+</section>
+<section class="content">
     <div class="col-md-12">
         <!-- general form elements -->
         <div class="box box-primary">
@@ -33,18 +36,19 @@
             </form>
         </div>
     </div>
-</section>
-<section class="content">
     <?php foreach ($estabelecimentos as $estabelecimento):?>
         <div class="col-md-4">
             <div class="box box-widget widget-user">
                 <a href="estabelecimentos/view/<?=$estabelecimento->id?>">
-                <div class="widget-user-header bg-black">
+                <div class="widget-user-header bg-black" style="background: url('<?='files/estabelecimentos/fundo/' . $estabelecimento->fundo_dir
+                    . '/' . $estabelecimento->fundo ?>')">
                     <h3 class="widget-user-username"><?=$estabelecimento->nome?></h3>
                     <h5 class="widget-user-desc"><?=$estabelecimento->categoria->nome?></h5>
                 </div>
                 <div class="widget-user-image">
-                    <img class="img-circle">
+                    <?= $this->Html->image('/files/estabelecimentos/logo/' . $estabelecimento->logo_dir
+                        . '/' . $estabelecimento->logo, ['height' => 50, 'width' => 50, 'class'=>'img-circle'])?>
+
                 </div>
                 </a>
                 <div class="box-footer">

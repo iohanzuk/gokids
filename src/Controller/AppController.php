@@ -52,6 +52,36 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+        $this->loadComponent('Auth', [
+            'authError'    => 'Você não está autorizado a acessar esta pagina.',
+            'authorize' => 'Controller',//added this line
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'login',
+                        'password' => 'senha'
+                    ]
+                ]
+            ],
+            'loginAction' => [
+                'controller' => 'Users',
+                'action' => 'login'
+            ],
+            'unauthorizedRedirect' => $this->referer()
+
+        ]);
+
+        $user_session = $this->Auth->user();
+        if (!empty($user_session)) {
+            $this->loadModel("Users");
+            $user_logado = $this->Users->get($user_session['id']);
+            $this->set(compact('user_logado'));
+        }
+        $this->Auth->allow(['view','index']);
+    }
+    public function isAuthorized($user)
+    {
+        return true;
     }
 
     /**
