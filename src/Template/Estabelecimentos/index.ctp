@@ -3,7 +3,7 @@
     <h1>
         Estabelecimentos
         <?php if (!empty($user_logado)) {
-            if ($user_logado->user_tipo_id == 2) {
+            if ($user_logado->user_tipo_id == 1) {
                 ?>
                 <div class="pull-right"><?= $this->Html->link(__('Novo'), ['action' => 'add'], ['escape' => false, 'class' => 'btn btn-success btn-xs']) ?></div>
             <?php }
@@ -26,11 +26,6 @@
 
                     <div class='col-md-4'>
                         <?= $this->Form->input('categoria_id', ['options' => $categorias, 'empty' => "Selecione", 'class' => 'selectpicker form-control', 'data-live-search' => true, 'data-size' => "5"]); ?>
-                    </div>
-
-                    <div class='col-md-4'>
-                        <?= $this->Form->input('estabelecimento_teste', ['label' => 'Estabelecimento', 'type' => 'select', 'controller' => 'Estabelecimentos',
-                            'action' => 'fill', 'label' => '', 'data' => 'select', 'class' => 'form-control']); ?>
                     </div>
 
                     <div class="col-md-12 text-center">

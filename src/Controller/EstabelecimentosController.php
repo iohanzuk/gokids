@@ -147,7 +147,7 @@ class EstabelecimentosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $estabelecimento = $this->Estabelecimentos->get($id);
         if ($this->Estabelecimentos->delete($estabelecimento)) {
-            $this->Flash->success(__('The {0} has been deleted.', 'Estabelecimento'));
+            $this->Flash->success(__('O {0} foi deletado', 'Estabelecimento'));
         } else {
             $this->Flash->error(__('The {0} could not be deleted. Please, try again.', 'Estabelecimento'));
         }
