@@ -33,6 +33,11 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg"><?php echo __('Informe os dados') ?></p>
+        <ol class="breadcrumb">
+            <li>
+                <?= $this->Html->link('<i class="fa fa-dashboard"></i> '.__('Voltar'), ['controller'=>'Estabelecimentos','action' => 'index'], ['escape' => false]) ?>
+            </li>
+        </ol>
         <p> <?php echo $this->Flash->render(); ?> </p>
         <p> <?php echo $this->Flash->render('auth'); ?> </p>
 

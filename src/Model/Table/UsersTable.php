@@ -46,6 +46,25 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->addBehavior('Proffer.Proffer', [
+            'foto' => [    // The name of your upload field
+                'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
+                'dir' => 'foto_dir',    // The name of the field to store the folder
+                'thumbnailSizes' => [ // Declare your thumbnails
+                    'square' => [    // Define the prefix of your thumbnail
+                        'w' => 200,    // Width
+                        'h' => 200,    // Height
+                        'jpeg_quality' => 100
+                    ],
+                    'portrait' => [        // Define a second thumbnail
+                        'w' => 100,
+                        'h' => 300
+                    ],
+                ],
+                'thumbnailMethod' => 'gd'    // Options are Imagick or Gd
+            ]
+        ]);
+
         $this->belongsTo('UserTipos', [
             'foreignKey' => 'user_tipo_id'
         ]);
