@@ -26,7 +26,7 @@
           <div class="box-body">
           <?php
             echo $this->Form->input('nome');
-            echo $this->Form->input('user_id', ['options' => $users, 'empty' => true]);
+            echo $this->Form->input('user_id', ['type' => 'hidden', 'value' => $user_logado->id]);
           ?>
           </div>
           <!-- /.box-body -->
