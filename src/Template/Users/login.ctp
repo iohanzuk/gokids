@@ -15,8 +15,12 @@
     <div class="row">
 
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="col-xs-6 pull-left">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+        </div>
+        <div class="col-xs-6 pull-right">
+            <?=$this->Html->link('Registrar',['controller'=>'Users',
+                'action'=>'add'],['class'=>'btn btn-success btn-block btn-flat'])?>
         </div>
         <!-- /.col -->
     </div>

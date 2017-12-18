@@ -19,9 +19,10 @@
       <div class="box box-primary">
         <!-- /.box-header -->
         <!-- form start -->
-        <?= $this->Form->create($user, array('role' => 'form')) ?>
+        <?= $this->Form->create($user, array('role' => 'form', 'type'=>'file')) ?>
           <div class="box-body">
           <?php
+            echo $this->Form->input('foto',['type'=>'file']);
             echo $this->Form->input('nome');
             echo $this->Form->input('login');
             echo $this->Form->input('senha',['type'=>'password']);
