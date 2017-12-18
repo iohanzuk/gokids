@@ -87,38 +87,44 @@
 
                     <?php if (!empty($estabelecimento->estabelecimento_caracteristicas)): ?>
 
-                        <table class="table table-hover">
-                            <tbody>
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+
+                            <th>
+                                Caracteristicas
+                            </th>
+                            <?php if (!empty($user_logado)){
+                            if ($user_logado->user_tipo_id == 2){?>
+                            <th>
+                                <?php echo __('Ações'); ?>
+                            </th>
+                            <?php }
+                            } ?>
+                        </tr>
+
+                        <?php foreach ($estabelecimento->estabelecimento_caracteristicas as $estabelecimentoCaracteristicas): ?>
                             <tr>
 
-                                <th>
-                                    Caracteristicas
-                                </th>
+                                <td>
+                                    <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
+                                </td>
+                                <?php if (!empty($user_logado)){
+                                if ($user_logado->user_tipo_id == 2){ ?>
+                                <td class="actions">
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-info btn-xs']) ?>
 
-                                <th>
-                                    <?php echo __('Ações'); ?>
-                                </th>
+                                    <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-warning btn-xs']) ?>
+
+                                    <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'escape' => false, 'class' => 'btn btn-danger btn-xs']) ?>
+                                </td>
+                                <?php }
+                                } ?>
                             </tr>
+                        <?php endforeach; ?>
 
-                            <?php foreach ($estabelecimento->estabelecimento_caracteristicas as $estabelecimentoCaracteristicas): ?>
-                                <tr>
-
-                                    <td>
-                                        <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
-                                    </td>
-
-                                    <td class="actions">
-                                        <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-info btn-xs']) ?>
-
-                                        <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-warning btn-xs']) ?>
-
-                                        <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'escape' => false, 'class' => 'btn btn-danger btn-xs']) ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
 
                     <?php endif; ?>
 

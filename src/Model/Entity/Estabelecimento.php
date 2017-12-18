@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Model\Entity;
 
+use App\Model\Table\EstabelecimentosTable;
 use Cake\ORM\Entity;
+use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 
 /**
  * Estabelecimento Entity
