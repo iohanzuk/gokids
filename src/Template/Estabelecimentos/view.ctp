@@ -15,7 +15,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="box box-widget widget-user">
-                <div class="widget-user-header bg-light-blue-gradient">
+                <div class="widget-user-header bg-light-blue-gradient" style="background: url('<?='files/estabelecimentos/fundo/'.$estabelecimento->fundo_dir
+                .'/'.$estabelecimento->fundo ?>')">
                     <h3 class="widget-user-username"><?= $estabelecimento->nome ?></h3>
                     <h5 class="widget-user-desc"><?= $estabelecimento->categoria->nome ?></h5>
                 </div>
