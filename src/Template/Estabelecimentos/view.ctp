@@ -14,11 +14,21 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <i class="fa fa-info"></i>
-                    <h3 class="box-title"><?php echo __('Informação'); ?></h3>
+            <div class="box box-widget widget-user">
+                <div class="widget-user-header bg-light-blue-gradient">
+                    <h3 class="widget-user-username"><?= $estabelecimento->nome ?></h3>
+                    <h5 class="widget-user-desc"><?= $estabelecimento->categoria->nome ?></h5>
                 </div>
+                <div class="widget-user-image">
+                    <?= $this->Html->image('/files/estabelecimentos/logo/' . $estabelecimento->logo_dir
+                        . '/' . $estabelecimento->logo, ['height' => 300, 'width' => 300, 'class' => 'img-circle']) ?>
+                </div>
+                <!-- ./col -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
                 <!-- /.box-header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
@@ -50,7 +60,6 @@
                         <dd>
                             <?= h($estabelecimento->celular) ?>
                         </dd>
-                        <dt><?= __('User') ?></dt>
                         <dd>
                             <?= $estabelecimento->has('user') ? $estabelecimento->user->id : '' ?>
                         </dd>
@@ -67,173 +76,171 @@
                             <?= $this->Text->autoParagraph(h($estabelecimento->descricao)); ?>
                         </dd>
                     </dl>
+
                 </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /.box -->
         </div>
-        <!-- ./col -->
-    </div>
-    <!-- div -->
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header">
-                    <i class="fa fa-share-alt"></i>
-                    <h3 class="box-title"><?= __('{0}', ['Caracteristicas']) ?></h3>
+        <!-- div -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <i class="fa fa-share-alt"></i>
+                        <h3 class="box-title"><?= __('{0}', ['Caracteristicas']) ?></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+
+                        <?php if (!empty($estabelecimento->estabelecimento_caracteristicas)): ?>
+
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+
+                                    <th>
+                                        Caracteristicas
+                                    </th>
+                                    <?php if (!empty($user_logado)) {
+                                        if ($user_logado->user_tipo_id == 2) {
+                                            ?>
+                                            <th>
+                                                <?php echo __('Ações'); ?>
+                                            </th>
+                                        <?php }
+                                    } ?>
+                                </tr>
+
+                                <?php foreach ($estabelecimento->estabelecimento_caracteristicas as $estabelecimentoCaracteristicas): ?>
+                                    <tr>
+
+                                        <td>
+                                            <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
+                                        </td>
+                                        <?php if (!empty($user_logado)) {
+                                            if ($user_logado->user_tipo_id == 2) { ?>
+                                                <td class="actions">
+                                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-info btn-xs']) ?>
+
+                                                    <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-warning btn-xs']) ?>
+
+                                                    <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'escape' => false, 'class' => 'btn btn-danger btn-xs']) ?>
+                                                </td>
+                                            <?php }
+                                        } ?>
+                                    </tr>
+                                <?php endforeach; ?>
+
+                                </tbody>
+                            </table>
+
+                        <?php endif; ?>
+
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-
-                    <?php if (!empty($estabelecimento->estabelecimento_caracteristicas)): ?>
-
-                    <table class="table table-hover">
-                        <tbody>
-                        <tr>
-
-                            <th>
-                                Caracteristicas
-                            </th>
-                            <?php if (!empty($user_logado)){
-                            if ($user_logado->user_tipo_id == 2){?>
-                            <th>
-                                <?php echo __('Ações'); ?>
-                            </th>
-                            <?php }
-                            } ?>
-                        </tr>
-
-                        <?php foreach ($estabelecimento->estabelecimento_caracteristicas as $estabelecimentoCaracteristicas): ?>
-                            <tr>
-
-                                <td>
-                                    <span class="badge bg-light-blue"><?= h($estabelecimentoCaracteristicas->caracteristica->nome) ?></span>
-                                </td>
-                                <?php if (!empty($user_logado)){
-                                if ($user_logado->user_tipo_id == 2){ ?>
-                                <td class="actions">
-                                    <?= $this->Html->link('<i class="fa fa-eye"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'view', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-info btn-xs']) ?>
-
-                                    <?= $this->Html->link('<i class="fa fa-pencil"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'edit', $estabelecimentoCaracteristicas->id], ['escape' => false, 'class' => 'btn btn-warning btn-xs']) ?>
-
-                                    <?= $this->Form->postLink('<i class="fa fa-trash-o"></i>', ['controller' => 'EstabelecimentoCaracteristicas', 'action' => 'delete', $estabelecimentoCaracteristicas->id], ['confirm' => __('Are you sure you want to delete # {0}?', $estabelecimentoCaracteristicas->id), 'escape' => false, 'class' => 'btn btn-danger btn-xs']) ?>
-                                </td>
-                                <?php }
-                                } ?>
-                            </tr>
-                        <?php endforeach; ?>
-
-                        </tbody>
-                    </table>
-
-                    <?php endif; ?>
-
-                </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
         </div>
-    </div>
-    <!-- Timeline -->
+        <!-- Timeline -->
 
-    <div class="box box-solid">
-        <div class="box-header with-border">
-            <i class="fa fa-clock-o"></i>
-            <h3 class="box-title"><?php echo __('Avaliações'); ?></h3>
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <i class="fa fa-clock-o"></i>
+                <h3 class="box-title"><?php echo __('Avaliações'); ?></h3>
+            </div>
+            <!-- /.box-header -->
+
+            <!-- /.box-body -->
+
         </div>
-        <!-- /.box-header -->
 
-        <!-- /.box-body -->
+        <div class="text-right">
+            <button class="btn btn-success btn-open-form"><i class="fa fa-plus"></i>Avaliar</button>
+        </div>
+        <br>
+        <div class="row hidden-form" style="display: none">
+            <div class="col-md-12">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <i class="fa fa-plus"></i>
+                        <h3 class="box-title">Nova Avaliação</h3>
+                    </div>
+                    <!-- <h3 class="box-title"><?php echo __('Nova Avaliação'); ?></h3>-->
+                    <!-- /.box-header -->
+                    <div class="box-body">
 
-    </div>
+                        <form enctype="multipart/form-data" method="post"
+                              action="<?= $this->Url->build(['controller' => 'Avaliacaos', 'action' => 'add']) ?>">
 
-    <div class="text-right">
-        <button class="btn btn-success btn-open-form"><i class="fa fa-plus"></i>Avaliar</button>
-    </div>
-    <br>
-    <div class="row hidden-form" style="display: none">
-        <div class="col-md-12">
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <i class="fa fa-plus"></i>
-                    <h3 class="box-title">Nova Avaliação</h3>
-                </div>
-                <!-- <h3 class="box-title"><?php echo __('Nova Avaliação'); ?></h3>-->
-                <!-- /.box-header -->
-                <div class="box-body">
+                            <div class="box-body">
 
-                    <form enctype="multipart/form-data" method="post"
-                          action="<?= $this->Url->build(['controller' => 'Avaliacaos', 'action' => 'add']) ?>">
+                                <div class="col-md-12 form-group">
+                                    <?php echo $this->Form->input('nota', ['type' => 'number']) ?>
+                                </div>
 
-                        <div class="box-body">
+                                <div class='col-md-12 form-group'>
+                                    <?php echo $this->Form->input('comentario', ['type' => 'textarea']) ?>
+                                </div>
 
-                            <div class="col-md-12 form-group">
-                                <?php echo $this->Form->input('nota', ['type' => 'number']) ?>
+                                <input type="hidden" name="estabelecimento_id" id="estabelecimento_id"
+                                       value="<?= $estabelecimento->id ?>">
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer text-right">
+                                <?= $this->Form->button(__('Salvar')) ?>
+                                <input type="button" class="btn btn-default btn-close-form" value="Cancelar"/>
                             </div>
 
-                            <div class='col-md-12 form-group'>
-                                <?php echo $this->Form->input('comentario', ['type' => 'textarea']) ?>
-                            </div>
-
-                            <input type="hidden" name="estabelecimento_id" id="estabelecimento_id"
-                                   value="<?= $estabelecimento->id ?>">
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-right">
-                            <?= $this->Form->button(__('Salvar')) ?>
-                            <input type="button" class="btn btn-default btn-close-form" value="Cancelar"/>
-                        </div>
-
-                    </form>
+                        </form>
 
 
+                    </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
+            <!-- ./col -->
         </div>
-        <!-- ./col -->
-    </div>
-    <!-- div -->
-    <ul class="timeline">
+        <!-- div -->
+        <ul class="timeline">
 
-        <?php foreach ($avaliacaos as $avaliacao): ?>
+            <?php foreach ($avaliacaos as $avaliacao): ?>
 
-            <!-- timeline time label -->
-            <li class="time-label">
+                <!-- timeline time label -->
+                <li class="time-label">
             <span class="bg-purple">
                 <?= date_format($avaliacao->created, 'd/m/Y') ?>
             </span>
-            </li>
-            <!-- /.timeline-label -->
+                </li>
+                <!-- /.timeline-label -->
 
-            <!-- timeline item -->
-            <li>
-                <!-- timeline icon -->
+                <!-- timeline item -->
+                <li>
+                    <!-- timeline icon -->
 
-                <div class="timeline-item">
+                    <div class="timeline-item">
                     <span class="time"><i
                                 class="fa fa-clock-o"></i> <?= date_format($avaliacao->created, 'H:i') ?></span>
 
-                    <h2 class="timeline-header">Nota: <strong><?= $avaliacao->nota ?></strong> <i
-                                class="fa fa-start"></i> <i class="fa fa-start"></i>
-                        <?php for ($i = 0; $i < $avaliacao->nota; $i++) {
-                            echo '<i class="fa fa-start"></i>';
-                        } ?></h2>
+                        <h2 class="timeline-header">Nota: <strong><?= $avaliacao->nota ?></strong> <i
+                                    class="fa fa-start"></i> <i class="fa fa-start"></i>
+                            <?php for ($i = 0; $i < $avaliacao->nota; $i++) {
+                                echo '<i class="fa fa-start"></i>';
+                            } ?></h2>
 
-                    <div class="timeline-body">
-                        <?= h($avaliacao->comentario) ?>
+                        <div class="timeline-body">
+                            <?= h($avaliacao->comentario) ?>
+                        </div>
+
                     </div>
+                </li>
 
-                </div>
+            <?php endforeach; ?>
+            <li>
+                <i class="fa fa-clock-o bg-gray"></i>
             </li>
 
-        <?php endforeach; ?>
-        <li>
-            <i class="fa fa-clock-o bg-gray"></i>
-        </li>
-
-        <!-- END timeline item -->
-    </ul>
+            <!-- END timeline item -->
+        </ul>
 
 </section>
