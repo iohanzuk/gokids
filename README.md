@@ -1,20 +1,33 @@
-# Este Projeto foi contruido utilizando o CAKE PHP e algumas Libs
+# Go Kids CG
+#### Projeto criado para a matéria de Prog Web da Universiade Federal do Mato Grosso do Sul
 
-## Installation - Instalação
+### Instalação
 
-Para instalar é necessário:
+Pre requisitos do Cake PHP
 
-### Composer -> donwload e instalção https://getcomposer.org/download/
-### MariaDB -> download e instalação https://downloads.mariadb.org/
-### Git -> download e instalação https://git-scm.com/
+- PHP 5.6.0 ou superior
+
+- extensão mbstring
+
+- extensão intl
+
+####Softwares necessários:
+
+- Composer -> donwload e instalção https://getcomposer.org/download/
+-  MariaDB -> download e instalação https://downloads.mariadb.org/
+-  Git -> download e instalação https://git-scm.com/
 
 Após instalados os softwares necessários, deve-se clonar este repositório.
+
 É necessário criar uma base de dados no Maria DB.
+
 Agora abra o terminal na pasta do projeto e execute o seguinte comando:
-#### composer install
+    
+    composer install
 Após terminar de instalar as dependências vá até a pasta config, abrar o arquivo 
 app.php, localize a configuração do DataSource que deve estar da seguinte maneira:
- 'Datasources' => [
+
+    'Datasources' => [
         'default' => [
             'className' => 'Cake\Database\Connection',
             'driver' => 'Cake\Database\Driver\Mysql',
@@ -56,21 +69,23 @@ app.php, localize a configuração do DataSource que deve estar da seguinte mane
 
             'url' => env('DATABASE_URL', null),
         ]
-Substitua o 'my_user' pelo seu usário do banco de dados.
+Substitua o 'my_user' pelo seu usário do banco de dados,
 o 'my_password' pela senha do teu banco.
 e o 'my_app' pelo nome da base de dados criada.
 
 Feito isso agora basta entar no diretorio bin do projeto via terminal
 e executar o seguinte comando:
 
-### cake migrations migrate
+    cake migrations migrate
 ou 
-### ./cake migrations migrate
+
+    ./cake migrations migrate
 
 Pronto nossas tabelas foram criadas e a aplicação está pronta para uso.
 
-# Libs utilizadas.
+## Libs utilizadas.
 
-### Bootstrap / AdminLTE
-
+- Bootstrap / AdminLTE (maiconpinto)
+- Migrations
+- Proffer (davidyell)
 
